@@ -1,0 +1,42 @@
+﻿<Window x:Class="WriteErase.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WriteErase"
+        mc:Ignorable="d" Icon="/Resources/icon.ico"
+        Title="Пиши-стирай" Height="550" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <StackPanel>
+                <TextBlock Margin="0,20,0,0" Text="«Пиши-стирай» - магазин по продаже канцелярских товаров" FontSize="16" FontStyle="Oblique" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <StackPanel>
+                <Image  Height="65" Width="100" Source="/Resources/logo.png"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="3">
+            <StackPanel Grid.Row="0" Grid.Column="3">
+                <!--<TextBox x:Name="tbcode" Height="20" Width="150"></TextBox>
+                <Button x:Name="BTKod" Margin="3" Click="BTKod_Click" Content="Ввести код" />-->
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Grid.ColumnSpan="3">
+            <StackPanel>
+                <Frame x:Name="frameM" NavigationUIVisibility="Hidden" Height="1000" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
