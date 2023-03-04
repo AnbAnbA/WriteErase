@@ -35,7 +35,7 @@
         </Grid>
         <Grid Grid.Row="1" Grid.ColumnSpan="3">
             <StackPanel>
-                <Frame x:Name="frameM" NavigationUIVisibility="Hidden" Height="1000" />
+                <Frame x:Name="frameM" NavigationUIVisibility="Hidden" Height="500" />
             </StackPanel>
         </Grid>
     </Grid>

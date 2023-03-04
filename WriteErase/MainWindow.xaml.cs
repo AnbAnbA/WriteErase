@@ -25,6 +25,7 @@ namespace WriteErase
             InitializeComponent();
             Base.WE = new Entities();
             FrameC.frameM = frameM;
+            FrameC.frameM.Navigate(new LogInUser());
         }
     }
 }

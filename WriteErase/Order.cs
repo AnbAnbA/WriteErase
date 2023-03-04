@@ -25,12 +25,13 @@ namespace WriteErase
         public System.DateTime OrderDeliveryDate { get; set; }
         public int OrderPickupPoint { get; set; }
         public System.DateTime OrderDate { get; set; }
-        public string OrderClient { get; set; }
+        public Nullable<int> OrderClient { get; set; }
         public int OrderCode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderProduct> OrderProduct { get; set; }
         public virtual OrderStatus OrderStatus1 { get; set; }
         public virtual PickupPoint PickupPoint { get; set; }
+        public virtual User User { get; set; }
     }
 }
