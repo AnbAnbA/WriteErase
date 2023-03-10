@@ -20,12 +20,13 @@ namespace WriteErase
     /// </summary>
     public partial class MainWindow : Window
     {
+        int ch = 0;
         public MainWindow()
         {
             InitializeComponent();
             Base.WE = new Entities();
             FrameC.frameM = frameM;
-            FrameC.frameM.Navigate(new LogInUser());
+            FrameC.frameM.Navigate(new LogInUser(ch));
         }
     }
 }
