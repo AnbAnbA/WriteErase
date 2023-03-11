@@ -68,6 +68,7 @@ namespace WriteErase
                 Padding = new Thickness(25),
                 FontSize = random.Next(13, 18),
                 FontStyle = FontStyles.Italic,
+                TextDecorations = TextDecorations.Strikethrough
             };
             can1.Children.Add(te);
 
@@ -81,6 +82,7 @@ namespace WriteErase
                 FontSize = random.Next(13, 18),
                 FontStyle = FontStyles.Italic,
                 FontWeight = FontWeights.Bold,
+                TextDecorations = TextDecorations.Strikethrough
             };
             can2.Children.Add(te1);
 
@@ -92,6 +94,7 @@ namespace WriteErase
                 Padding = new Thickness(25),
                 FontSize = random.Next(13, 18),
                 FontWeight = FontWeights.Bold,
+                TextDecorations = TextDecorations.Strikethrough
             };
             can3.Children.Add(te2);
 
@@ -104,6 +107,7 @@ namespace WriteErase
                 FontSize = random.Next(13, 18),
                 FontStyle = FontStyles.Italic,
                 FontWeight = FontWeights.Bold,
+                TextDecorations = TextDecorations.Strikethrough
             };
             can4.Children.Add(te3);
 

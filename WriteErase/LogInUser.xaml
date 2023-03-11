@@ -9,6 +9,8 @@
       Title="LogInUser">
 
     <Grid>
+
+        <Label Content="Авторизация" HorizontalAlignment="Center" FontSize="25" VerticalAlignment="Top"></Label>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel >
                 <StackPanel Orientation="Horizontal">
