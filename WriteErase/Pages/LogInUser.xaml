@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WriteErase"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="350" d:DesignWidth="600"
       Title="LogInUser">
 
     <Grid>
@@ -30,12 +30,12 @@
                     </Button>-->
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,50,0,0">
-                <Button  x:Name="btcancel" Click="btcancel_Click" Margin="85,0,0,0" Width="75" Height="20" Content="Отмена" IsEnabled="True" Style="{StaticResource ResourceKey=BtnMain}" Cursor="Hand"></Button>
+            <StackPanel Orientation="Horizontal" Margin="0,40,0,0">
+                <Button  x:Name="btcancel" Click="btcancel_Click" Margin="75,0,0,0" Width="75" Height="20" Content="Отмена" IsEnabled="True" Style="{StaticResource ResourceKey=BtnMain}" Cursor="Hand"></Button>
                 <Button x:Name="btlogin" Click="btlogin_Click"  Margin="30,0,0,0" Width="75" Height="20" Content="Вход" IsEnabled="False" Style="{StaticResource ResourceKey=BtnMain}"></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,50,0,0">
-                <Button  x:Name="btguest" Click="btguest_Click" Margin="120,0,0,0" Width="105" Height="20" Content="Войти как гость" IsEnabled="True" Style="{StaticResource ResourceKey=BtnMain}"></Button>
+                <Button  x:Name="btguest" Click="btguest_Click" Margin="110,0,0,0" Width="105" Height="20" Content="Войти как гость" IsEnabled="True" Style="{StaticResource ResourceKey=BtnMain}" Cursor="Hand"></Button>
             </StackPanel>
         </StackPanel>
     </Grid>
