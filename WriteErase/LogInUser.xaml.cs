@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WriteErase
 {
@@ -20,6 +21,7 @@ namespace WriteErase
     /// </summary>
     public partial class LogInUser : Page
     {
+        DispatcherTimer timer = new DispatcherTimer();
         int che ;
         public LogInUser(int ch)
         {
@@ -34,6 +36,14 @@ namespace WriteErase
             {
                 spcode.Visibility= Visibility.Visible;
             }
+            timer.Interval = TimeSpan.FromSeconds(10);
+            timer.Tick += new EventHandler(Timer_Trick);
+        }
+
+        private void Timer_Trick(object sender, EventArgs e) 
+        {
+           tbnumber.IsEnabled = true;
+           tbnumber.Focus();
         }
 
         private void tbnumber_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -42,6 +52,7 @@ namespace WriteErase
             {
                 tbpassword.IsEnabled = true;
                 tbpassword.Focus();
+                timer.Stop();
             }
         }
 
@@ -49,11 +60,22 @@ namespace WriteErase
         {
             if (e.Key == Key.Enter)
             {
-                LogInUs();
+                if (che != 1)
+                {
+                    LogInUs();
+                }
+                else
+                {
+                    //вывести капчу
+                    capch();
+                    tbcode.IsEnabled = true;
+                    tbcode.Focus();
+                }
+                
             }
         }
 
-        public void LogInUs() 
+        public void LogInUs() //метод авторизации
         {
             //User user = Base.WE.User.FirstOrDefault(z => z.UserLogin == tbnumber.Text);
             //User user1 = Base.WE.User.FirstOrDefault(z => z.UserPassword == tbpassword.Password);
@@ -61,11 +83,24 @@ namespace WriteErase
             User user = Base.WE.User.FirstOrDefault(z => z.UserLogin == tbnumber.Text&& z.UserPassword == tbpassword.Password);
             if (user == null)
             {
-                MessageBox.Show("Не удалось войти! Повторите вход!");
-                tbnumber.Text = "";
-                tbpassword.Password = "";
-                che = 1;
-                FrameC.frameM.Navigate(new LogInUser(che));
+                if (che == 1) 
+                {
+                    MessageBox.Show("Не удалось войти! Система входа заблокирована на 10 секунд!");
+                    tbnumber.IsEnabled = false;
+                    tbnumber.Text = "";
+                    tbpassword.Password = "";
+                    tbcode.Text = "";
+                    tbcode.IsEnabled = false;
+                    timer.Start();
+                }
+                else 
+                {
+                    MessageBox.Show("Не удалось войти! Повторите вход!");
+                    tbnumber.Text = "";
+                    tbpassword.Password = "";
+                    che = 1;
+                    FrameC.frameM.Navigate(new LogInUser(che));
+                }
             }
             else
             { 
@@ -98,8 +133,6 @@ namespace WriteErase
                 }
                 else 
                 {
-                    //вывести капчу
-                    capch();
                     btlogin.IsEnabled = false;
                 }
             }
@@ -109,7 +142,7 @@ namespace WriteErase
             }
         }
 
-        public void capch() 
+        public void capch()  //метод для вызова капчи
         {
             WindowCapcha windowCapcha = new WindowCapcha();
             windowCapcha.ShowDialog();
@@ -136,8 +169,40 @@ namespace WriteErase
         {
             tbnumber.Text = "";
             tbpassword.Password = "";
+            tbcode.Text = "";
         }
 
+        private void tbcode_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (tbcode.Text != "")
+            {
+               btlogin.IsEnabled = true; 
+            }
+            else
+            {
+                btlogin.IsEnabled = false;
+            }
+        }
 
+        private void tbcode_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (WindowCapcha.c == tbcode.Text)
+                {
+                    LogInUs();
+                }
+                else 
+                {
+                    MessageBox.Show("Не верный код! Система входа заблокирована на 10 секунд!");
+                    tbnumber.IsEnabled = false;
+                    tbnumber.Text = "";
+                    tbpassword.Password = "";
+                    tbcode.Text = "";
+                    tbcode.IsEnabled = false;
+                    timer.Start();
+                }
+            }
+        }
     }
 }

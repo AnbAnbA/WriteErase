@@ -21,7 +21,7 @@
                 </StackPanel>
                 <StackPanel Name="spcode" Orientation="Horizontal" Visibility="Collapsed">
                     <Label Margin="5,0,0,0" Content="Код"></Label>
-                    <TextBox Margin="29,5,0,10"  x:Name="tbcode" Width="200" IsEnabled="False" ></TextBox>
+                    <TextBox Margin="29,5,0,10"  x:Name="tbcode" Width="200" IsEnabled="False" TextChanged="tbcode_TextChanged" PreviewKeyDown="tbcode_PreviewKeyDown"  ></TextBox>
 
                     <!--<Button Margin="5,0,0,6"  x:Name="btrefresh" Width="23" Height="23" IsEnabled="False">
                         <Image  Width="20" Height="20" Source="/Resources/На авторизацию_Обновление кода.jpg"  ></Image>
