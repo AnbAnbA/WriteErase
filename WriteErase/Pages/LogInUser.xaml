@@ -31,8 +31,11 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,50,0,0">
-                <Button  x:Name="btcancel" Click="btcancel_Click" Margin="85,0,0,0" Width="75" Height="20" Content="Отмена" IsEnabled="True"></Button>
-                <Button x:Name="btlogin" Click="btlogin_Click"  Margin="30,0,0,0" Width="75" Height="20" Content="Вход" IsEnabled="False"></Button>
+                <Button  x:Name="btcancel" Click="btcancel_Click" Margin="85,0,0,0" Width="75" Height="20" Content="Отмена" IsEnabled="True" Style="{StaticResource ResourceKey=BtnMain}" Cursor="Hand"></Button>
+                <Button x:Name="btlogin" Click="btlogin_Click"  Margin="30,0,0,0" Width="75" Height="20" Content="Вход" IsEnabled="False" Style="{StaticResource ResourceKey=BtnMain}"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,50,0,0">
+                <Button  x:Name="btguest" Click="btguest_Click" Margin="120,0,0,0" Width="105" Height="20" Content="Войти как гость" IsEnabled="True" Style="{StaticResource ResourceKey=BtnMain}"></Button>
             </StackPanel>
         </StackPanel>
     </Grid>

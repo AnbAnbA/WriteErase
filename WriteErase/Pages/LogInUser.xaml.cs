@@ -39,6 +39,21 @@ namespace WriteErase
             timer.Interval = TimeSpan.FromSeconds(10);
             timer.Tick += new EventHandler(Timer_Trick);
         }
+        public LogInUser()
+        {
+            InitializeComponent();
+            tbnumber.Focus();
+            if (che == 0)
+            {
+                spcode.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                spcode.Visibility = Visibility.Visible;
+            }
+            timer.Interval = TimeSpan.FromSeconds(10);
+            timer.Tick += new EventHandler(Timer_Trick);
+        }
 
         private void Timer_Trick(object sender, EventArgs e) 
         {
@@ -108,16 +123,16 @@ namespace WriteErase
                     {
                         case 2:
                             MessageBox.Show("Здравствуйте, администратор " + user.UserName);
-                            //FrameC.frameM.Navigate(new Pages.MenuA(User));  // переход в меню администратора
+                            FrameC.frameM.Navigate(new ShowProduct(user));  // переход в меню администратора
                             break;
                         case 3:
                             MessageBox.Show("Здравствуйте, менеджер " + user.UserName);
-                            //FrameC.frameM.Navigate(new Pages.PersonalArea(User));  // переход в личный кабинет
-                            break;
+                        FrameC.frameM.Navigate(new ShowProduct(user));   // переход в личный кабинет
+                        break;
                         case 1:
                             MessageBox.Show("Здравствуйте, клиент " + user.UserName);
-                            //FrameC.frameM.Navigate(new Pages.PersonalArea(User));  // переход в личный кабинет
-                            break;
+                        FrameC.frameM.Navigate(new ShowProduct(user));   // переход в личный кабинет
+                        break;
                     }
             }
 
@@ -203,6 +218,11 @@ namespace WriteErase
                     timer.Start();
                 }
             }
+        }
+
+        private void btguest_Click(object sender, RoutedEventArgs e)
+        {
+            FrameC.frameM.Navigate(new ShowProduct());
         }
     }
 }

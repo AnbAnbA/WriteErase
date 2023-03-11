@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WriteErase"
         mc:Ignorable="d" Icon="/Resources/icon.ico"
-        Title="Пиши-стирай" Height="550" Width="800">
+        Title="Пиши-стирай" Height="750" Width="1000" MinHeight="550" MinWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="65"></RowDefinition>
@@ -35,7 +35,7 @@
         </Grid>
         <Grid Grid.Row="1" Grid.ColumnSpan="3">
             <StackPanel>
-                <Frame x:Name="frameM" NavigationUIVisibility="Hidden" Height="500" />
+                <Frame x:Name="frameM" NavigationUIVisibility="Hidden" Height="1050" />
             </StackPanel>
         </Grid>
     </Grid>
