@@ -104,8 +104,8 @@ namespace WriteErase
 
         private void btBask_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 Order order = new Order();
                 int countDay = 0;
                 List<Order> orderLast = Base.WE.Order.OrderBy(x => x.OrderID).ToList();
@@ -149,11 +149,11 @@ namespace WriteErase
                 ticket.ShowDialog();
                 partialBasks.Clear();
                 this.Close();
-            }
-            catch
-            {
-                MessageBox.Show("При создание заказа возникла ошибка!");
-            }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("При создание заказа возникла ошибка!");
+            //}
         }
 
 

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WriteErase"
       mc:Ignorable="d" 
-      d:DesignHeight="350" d:DesignWidth="600"
+      d:DesignHeight="350" d:DesignWidth="600" MinHeight="350" MinWidth="600"
       Title="LogInUser">
 
     <Grid>
