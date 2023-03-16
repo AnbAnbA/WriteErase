@@ -20,7 +20,7 @@ namespace WriteErase
     /// </summary>
     public partial class ShowProduct : Page
     {
-        //List<ProductBasket> basket = new List<ProductBasket>();
+        List<PartialBask> partialBasks = new List<PartialBask>();
         User user;
         public ShowProduct(User user)
         {
@@ -153,7 +153,12 @@ namespace WriteErase
 
         private void btnBasket_Click(object sender, RoutedEventArgs e)
         {
-
+            WindowBask WindowBask = new WindowBask(partialBasks, user);
+            WindowBask.ShowDialog();
+            if (partialBasks.Count == 0)
+            {
+                btnBasket.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void btnOrders_Click(object sender, RoutedEventArgs e)
@@ -163,7 +168,24 @@ namespace WriteErase
 
         private void miAddBasket_Click(object sender, RoutedEventArgs e)
         {
-
+            Product product=(Product)lvProduct.SelectedItem;
+            bool s = false;
+            foreach (PartialBask partialBask in partialBasks) 
+            {
+                if (partialBask.product == product) 
+                {
+                    partialBask.count = partialBask.count += 1;
+                    s = true;
+                }
+            }
+            if (!s) 
+            {
+                PartialBask partialBaske = new PartialBask();
+                partialBaske.product = product;
+                partialBaske.count = 1;
+                partialBasks.Add(partialBaske);
+            }
+            btnBasket.Visibility = Visibility.Visible;
         }
     }
 }
