@@ -182,6 +182,7 @@ namespace WriteErase
             {
                 PartialBask partialBaske = new PartialBask();
                 partialBaske.product = product;
+                partialBaske.article = product.ProductArticleNumber;
                 partialBaske.count = 1;
                 partialBasks.Add(partialBaske);
             }

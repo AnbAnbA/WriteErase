@@ -12,14 +12,12 @@ namespace WriteErase
     using System;
     using System.Collections.Generic;
     
-    public partial class OrderProduct
+    public partial class sysdiagrams
     {
-        public int OrderProductID { get; set; }
-        public int OrderID { get; set; }
-        public string ProductArticleNumber { get; set; }
-        public Nullable<int> ProductCount { get; set; }
-    
-        public virtual Order Order { get; set; }
-        public virtual Product Product { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

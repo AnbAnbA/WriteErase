@@ -22,7 +22,9 @@ namespace WriteErase
         double summa;
         double summaDiscount;
         User user;
+
         List<PartialBask> partialBasks;
+        List<PickupPoint> pickupPoints;
         public WindowBask(List<PartialBask> partialBasks, User user)
         {
             InitializeComponent();
@@ -34,9 +36,17 @@ namespace WriteErase
             this.user = user;
             lvProduct.ItemsSource = partialBasks;
             calculateSummaAndDiscount();
-            cmbPickupPoint.ItemsSource = Base.WE.PickupPoint.ToList();
-            cmbPickupPoint.SelectedValuePath = "PickupPointID";
-            cmbPickupPoint.DisplayMemberPath = "PPIndex"+","+"PPCity" + "," +"PPStreet" + "," +"PPHouse";
+            
+            
+            
+           
+            pickupPoints = Base.WE.PickupPoint.ToList();
+
+            for (int i = 0; i < pickupPoints.Count; i++) 
+            {
+                cmbPickupPoint.Items.Add(pickupPoints[i].PPIndex + ", " + pickupPoints[i].City.CityName + ", " + pickupPoints[i].Street.StreetName + ", " + pickupPoints[i].PPHouse);
+            }
+
             cmbPickupPoint.SelectedIndex = 0;
         }
 
@@ -58,18 +68,18 @@ namespace WriteErase
         {
             TextBox tb = (TextBox)sender;
             string index = tb.Uid;
-            PartialBask partialBask = partialBasks.FirstOrDefault(x => x.product.ProductArticleNumber == index);
+            PartialBask partialBasr = partialBasks.FirstOrDefault(x => x.product.ProductArticleNumber == index);
             if (tb.Text.Replace(" ", "") == "")
             {
-                partialBask.count = 0;
+                partialBasr.count = 0;
             }
             else
             {
-                partialBask.count = Convert.ToInt32(tb.Text);
+                partialBasr.count = Convert.ToInt32(tb.Text);
             }
-            if (partialBask.count == 0)
+            if (partialBasr.count == 0)
             {
-                partialBasks.Remove(partialBask);
+                partialBasks.Remove(partialBasr);
             }
             if (partialBasks.Count == 0)
             {
@@ -97,18 +107,20 @@ namespace WriteErase
             try
             {
                 Order order = new Order();
-                List<Order> orderLast = Base.WE.Order.OrderBy(x => x.OrderNomer).ToList();
+                int countDay = 0;
+                List<Order> orderLast = Base.WE.Order.OrderBy(x => x.OrderID).ToList();
                 order.OrderID = orderLast[orderLast.Count - 1].OrderID + 1;
-                order.OrderStatus = Base.WE.OrderStatus.FirstOrDefault(x => x.OrderStatus1 == "Новый").OrderStatusID;
+                order.OrderStatus = Base.WE.OrderStatus.FirstOrDefault(x => x.OrderStatusName == "Новый").OrderStatusID;
                 order.OrderDate = DateTime.Now;
                 if (getDeliveryTime())
                 {
-                    order.OrderDeliveryDate = order.OrderDate.AddDays(6);
+                    countDay = 6;
                 }
                 else
                 {
-                    order.OrderDeliveryDate = order.OrderDate.AddDays(3);
+                    countDay = 3;
                 }
+                order.OrderDeliveryDate = order.OrderDate.AddDays(countDay);
                 order.OrderPickupPoint = (int)((PickupPoint)cmbPickupPoint.SelectedItem).PickupPointID;
                 if (user != null)
                 {
@@ -133,7 +145,7 @@ namespace WriteErase
                 }
                 Base.WE.SaveChanges();
                 MessageBox.Show("Заказ успешно создан");
-                WindowTicket ticket = new WindowTicket(order, partialBasks, summa, summaDiscount);
+                WindowTicket ticket = new WindowTicket(order, partialBasks, summa, summaDiscount,countDay);
                 ticket.ShowDialog();
                 partialBasks.Clear();
                 this.Close();

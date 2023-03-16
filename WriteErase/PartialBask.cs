@@ -10,6 +10,7 @@ namespace WriteErase
     {
         public Product product { get; set; }
         public int count { get; set; }
+        public string article { get; set; }
         public string textDecoration
         {
             get

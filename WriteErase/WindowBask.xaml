@@ -52,7 +52,7 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Количество: "/>
-                                    <TextBox x:Name="tbCount" Uid="{Binding product.ProductID}" Text="{Binding count}" MinWidth="100" TextChanged="tbCount_TextChanged" PreviewTextInput="tbCount_PreviewTextInput" />
+                                    <TextBox x:Name="tbCount" Uid="{Binding product.ProductArticleNumber}" Text="{Binding count}" MinWidth="100" TextChanged="tbCount_TextChanged" PreviewTextInput="tbCount_PreviewTextInput" />
                                 </StackPanel>
                                 <Button x:Name="btdelete" Uid="{Binding product.ProductArticleNumber}" Content="Убрать из корзины" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Left" Click="btdelete_Click"/>
                             </WrapPanel>

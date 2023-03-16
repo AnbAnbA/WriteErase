@@ -31,7 +31,7 @@
           <Property Name="OrderProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderID" Type="int" Nullable="false" />
           <Property Name="ProductArticleNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="ProductCount" Type="int" Nullable="false" />
+          <Property Name="ProductCount" Type="int" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
@@ -102,6 +102,16 @@
           </Key>
           <Property Name="StreetID" Type="int" Nullable="false" />
           <Property Name="StreetName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TitleProduct">
           <Key>
@@ -297,6 +307,7 @@
           <EntitySet Name="ProductProvider" EntityType="Self.ProductProvider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Street" EntityType="Self.Street" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TitleProduct" EntityType="Self.TitleProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -369,6 +380,7 @@
           <EntitySet Name="ProductProvider" EntityType="practic2Model.ProductProvider" />
           <EntitySet Name="Role" EntityType="practic2Model.Role" />
           <EntitySet Name="Street" EntityType="practic2Model.Street" />
+          <EntitySet Name="sysdiagrams" EntityType="practic2Model.sysdiagrams" />
           <EntitySet Name="TitleProduct" EntityType="practic2Model.TitleProduct" />
           <EntitySet Name="Unit" EntityType="practic2Model.Unit" />
           <EntitySet Name="User" EntityType="practic2Model.User" />
@@ -456,7 +468,7 @@
           <Property Name="OrderProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="ProductArticleNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ProductCount" Type="Int32" Nullable="false" />
+          <Property Name="ProductCount" Type="Int32" />
           <NavigationProperty Name="Order" Relationship="practic2Model.FK__OrderProd__Order__403A8C7D" FromRole="OrderProduct" ToRole="Order" />
           <NavigationProperty Name="Product" Relationship="practic2Model.FK__OrderProd__Produ__412EB0B6" FromRole="OrderProduct" ToRole="Product" />
         </EntityType>
@@ -544,6 +556,16 @@
           <Property Name="StreetID" Type="Int32" Nullable="false" />
           <Property Name="StreetName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PickupPoint" Relationship="practic2Model.FK_PickupPoint_Street" FromRole="Street" ToRole="PickupPoint" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TitleProduct">
           <Key>
@@ -731,7 +753,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -843,6 +865,17 @@
               <MappingFragment StoreEntitySet="Street">
                 <ScalarProperty Name="StreetName" ColumnName="StreetName" />
                 <ScalarProperty Name="StreetID" ColumnName="StreetID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="practic2Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
