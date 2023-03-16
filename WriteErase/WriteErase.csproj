@@ -126,6 +126,9 @@
     <Compile Include="WindowCapcha.xaml.cs">
       <DependentUpon>WindowCapcha.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowTicket.xaml.cs">
+      <DependentUpon>WindowTicket.xaml</DependentUpon>
+    </Compile>
     <Page Include="Pages\LogInUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -152,6 +155,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowCapcha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowTicket.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

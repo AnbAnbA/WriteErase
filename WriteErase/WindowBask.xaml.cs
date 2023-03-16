@@ -35,15 +35,15 @@ namespace WriteErase
             lvProduct.ItemsSource = partialBasks;
             calculateSummaAndDiscount();
             cmbPickupPoint.ItemsSource = Base.WE.PickupPoint.ToList();
-            cmbPickupPoint.SelectedValuePath = "OrderPickupPointID";
-            cmbPickupPoint.DisplayMemberPath = "OrderPickupPoint";
+            cmbPickupPoint.SelectedValuePath = "PickupPointID";
+            cmbPickupPoint.DisplayMemberPath = "PPIndex"+","+"PPCity" + "," +"PPStreet" + "," +"PPHouse";
             cmbPickupPoint.SelectedIndex = 0;
         }
 
         private void btdelete_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-            int index = Convert.ToInt32(btn.Uid);
+            string index =btn.Uid;
             PartialBask partialBask = partialBasks.FirstOrDefault(x => x.product.ProductArticleNumber == index);
             partialBasks.Remove(partialBask);
             if (partialBasks.Count == 0)
@@ -57,8 +57,8 @@ namespace WriteErase
         private void tbCount_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            int index = Convert.ToInt32(tb.Uid);
-            PartialBask partialBask = partialBasks.FirstOrDefault(x => x.product.ProductID == index);
+            string index = tb.Uid;
+            PartialBask partialBask = partialBasks.FirstOrDefault(x => x.product.ProductArticleNumber == index);
             if (tb.Text.Replace(" ", "") == "")
             {
                 partialBask.count = 0;
@@ -98,8 +98,8 @@ namespace WriteErase
             {
                 Order order = new Order();
                 List<Order> orderLast = Base.WE.Order.OrderBy(x => x.OrderNomer).ToList();
-                order.OrderNomer = orderLast[orderLast.Count - 1].OrderNomer + 1;
-                order.OrderStatusID = Base.WE.OrderStatus.FirstOrDefault(x => x.OrderStatus1 == "Новый").OrderStatusID;
+                order.OrderID = orderLast[orderLast.Count - 1].OrderID + 1;
+                order.OrderStatus = Base.WE.OrderStatus.FirstOrDefault(x => x.OrderStatus1 == "Новый").OrderStatusID;
                 order.OrderDate = DateTime.Now;
                 if (getDeliveryTime())
                 {
@@ -109,10 +109,10 @@ namespace WriteErase
                 {
                     order.OrderDeliveryDate = order.OrderDate.AddDays(3);
                 }
-                order.OrderPickupPointID = (int)((Pigalev_Sessia1.PickupPoint)cmbPickupPoint.SelectedItem).OrderPickupPointID;
+                order.OrderPickupPoint = (int)((PickupPoint)cmbPickupPoint.SelectedItem).PickupPointID;
                 if (user != null)
                 {
-                    order.UserID = user.UserID;
+                    order.OrderClient = user.UserID;
                 }
                 Random rand = new Random();
                 string textCode = "";
@@ -127,13 +127,13 @@ namespace WriteErase
                 {
                     OrderProduct orderProduct = new OrderProduct();
                     orderProduct.OrderID = order.OrderID;
-                    orderProduct.ProductID = productBasket.product.ProductID;
-                    orderProduct.Count = productBasket.count;
+                    orderProduct.ProductArticleNumber = partialBask.product.ProductArticleNumber;
+                    orderProduct.ProductCount = partialBask.count;
                     Base.WE.OrderProduct.Add(orderProduct);
                 }
                 Base.WE.SaveChanges();
                 MessageBox.Show("Заказ успешно создан");
-                Ticket ticket = new Ticket(order, partialBasks, summa, summaDiscount);
+                WindowTicket ticket = new WindowTicket(order, partialBasks, summa, summaDiscount);
                 ticket.ShowDialog();
                 partialBasks.Clear();
                 this.Close();
