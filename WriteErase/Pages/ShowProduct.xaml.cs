@@ -163,7 +163,7 @@ namespace WriteErase
 
         private void btnOrders_Click(object sender, RoutedEventArgs e)
         {
-
+            FrameC.frameM.Navigate(new ShowOrder(user));
         }
 
         private void miAddBasket_Click(object sender, RoutedEventArgs e)

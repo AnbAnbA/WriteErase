@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace WriteErase
 {
-    partial class Product
+   public partial class Product
     {
         public SolidColorBrush colorBackground
         {
