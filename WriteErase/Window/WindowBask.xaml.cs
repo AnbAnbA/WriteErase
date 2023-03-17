@@ -37,14 +37,12 @@ namespace WriteErase
             lvProduct.ItemsSource = partialBasks;
             calculateSummaAndDiscount();
             
-            
-            
            
             pickupPoints = Base.WE.PickupPoint.ToList();
 
             for (int i = 0; i < pickupPoints.Count; i++) 
             {
-                cmbPickupPoint.Items.Add(pickupPoints[i].PPIndex + ", " + pickupPoints[i].City.CityName + ", " + pickupPoints[i].Street.StreetName + ", " + pickupPoints[i].PPHouse);
+                cmbPickupPoint.Items.Add(pickupPoints[i].PickupPointID+", "+ pickupPoints[i].PPIndex + ", " + pickupPoints[i].City.CityName + ", " + pickupPoints[i].Street.StreetName + ", " + pickupPoints[i].PPHouse);
             }
 
             cmbPickupPoint.SelectedIndex = 0;
@@ -104,8 +102,8 @@ namespace WriteErase
 
         private void btBask_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 Order order = new Order();
                 int countDay = 0;
                 List<Order> orderLast = Base.WE.Order.OrderBy(x => x.OrderID).ToList();
@@ -121,7 +119,7 @@ namespace WriteErase
                     countDay = 3;
                 }
                 order.OrderDeliveryDate = order.OrderDate.AddDays(countDay);
-                order.OrderPickupPoint = (int)((PickupPoint)cmbPickupPoint.SelectedItem).PickupPointID;
+                order.OrderPickupPoint = cmbPickupPoint.SelectedIndex+1;
                 if (user != null)
                 {
                     order.OrderClient = user.UserID;
@@ -149,11 +147,11 @@ namespace WriteErase
                 ticket.ShowDialog();
                 partialBasks.Clear();
                 this.Close();
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("При создание заказа возникла ошибка!");
-            //}
+            }
+            catch
+            {
+                MessageBox.Show("При создание заказа возникла ошибка!");
+            }
         }
 
 

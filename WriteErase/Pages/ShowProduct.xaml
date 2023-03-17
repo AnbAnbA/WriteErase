@@ -76,7 +76,7 @@
                                 <StackPanel Orientation="Vertical" Grid.Column="1">
                                     <TextBlock Text="{Binding productName}" FontWeight="Bold" TextWrapping="Wrap"/>
                                     <TextBlock Text="{Binding ProductDescription}" TextWrapping="Wrap"/>
-                                    <TextBlock Text="{Binding Manufacturer.ProductManufacturer, StringFormat={}Производитель: {0}}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding ProductManufacture.Manufacture, StringFormat={}Производитель: {0}}" TextWrapping="Wrap"/>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="Цена: "/>
                                         <TextBlock Text="{Binding ProductCost, StringFormat={}{0:F2}}" TextDecorations="{Binding textDecoration}"/>

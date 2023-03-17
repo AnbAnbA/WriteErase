@@ -37,17 +37,16 @@ namespace WriteErase
             this.countDay = countDay;
             tbOrderNomer.Text = tbOrderNomer.Text + order.OrderID.ToString();
             tbDateOrder.Text = tbDateOrder.Text + order.OrderDate.ToString("d");
-            for (int i = 0; i < partialBasks.Count; i++)
+
+
+            foreach (PartialBask pb in partialBasks)
             {
-                if (i == partialBasks.Count - 1)
-                {
-                    tbOrders.Text = tbOrders.Text + partialBasks[i].product.ProductName + " Количество: " + partialBasks[i].count;
-                }
-                else
-                {
-                    tbOrders.Text = tbOrders.Text + partialBasks[i].product.ProductName + " Количество: " + partialBasks[i].count + "\n";
-                }
+                Product product = Base.WE.Product.FirstOrDefault(x => x.ProductArticleNumber == pb.product.ProductArticleNumber);
+                OrderProduct productProduct = Base.WE.OrderProduct.FirstOrDefault(x=>x.ProductArticleNumber==product.ProductArticleNumber && x.OrderID==order.OrderID);
+                tbOrders.Text = tbOrders.Text + product.TitleProduct.Title + " Количество: " + productProduct.ProductCount + ", " + "\n";
             }
+
+           
             tbSumma.Text = tbSumma.Text + summa.ToString("0.00") + " руб.";
             tbSummaDiscount.Text = tbSummaDiscount.Text + summaDiscount.ToString("0.00") + " руб.";
             PickupPoint pickupPoint = Base.WE.PickupPoint.FirstOrDefault(x => x.PickupPointID == order.OrderPickupPoint);
@@ -112,22 +111,19 @@ namespace WriteErase
             gfx.DrawString("Состав заказа: ", font, XBrushes.Black,
                 new XRect(10, height, page.Width, page.Height),
                 XStringFormats.TopLeft);
-            for (int i = 0; i < partialBasks.Count; i++)
-            {
+           
+                
+                    foreach (PartialBask pb in partialBasks)
+                    {
                 height += 30;
-                if (i != partialBasks.Count - 1)
-                {
-                    gfx.DrawString("" + partialBasks[i].product.ProductName + " Колличество: " + partialBasks[i].count + ";", font, XBrushes.Black,
-                        new XRect(30, height, page.Width, page.Height),
-                        XStringFormats.TopLeft);
-                }
-                else
-                {
-                    gfx.DrawString("" + partialBasks[i].product.ProductName + " Колличество: " + partialBasks[i].count + ".", font, XBrushes.Black,
-                        new XRect(30, height, page.Width, page.Height),
-                        XStringFormats.TopLeft);
-                }
-            }
+                Product product = Base.WE.Product.FirstOrDefault(x => x.ProductArticleNumber == pb.product.ProductArticleNumber);
+                OrderProduct productProduct = Base.WE.OrderProduct.FirstOrDefault(x => x.ProductArticleNumber == product.ProductArticleNumber && x.OrderID == order.OrderID);
+                gfx.DrawString("" + product.TitleProduct.Title + " Количество: " + productProduct.ProductCount + ";" , font, XBrushes.Black,
+                            new XRect(30, height, page.Width, page.Height),
+                            XStringFormats.TopLeft);
+                    }
+              
+            
             height += 30;
             gfx.DrawString("Сумма заказа: " + summa.ToString("0.00") + " руб.", font, XBrushes.Black,
                 new XRect(10, height, page.Width, page.Height),
@@ -137,6 +133,7 @@ namespace WriteErase
                 new XRect(10, height, page.Width, page.Height),
                 XStringFormats.TopLeft);
             height += 30;
+
             gfx.DrawString("Пункт выдачи: " + order.PickupPoint.PPIndex+", "+order.PickupPoint.City.CityName+", "+order.PickupPoint.Street.StreetName+", "+order.PickupPoint.PPHouse, font, XBrushes.Black,
                 new XRect(10, height, page.Width, page.Height),
                 XStringFormats.TopLeft);

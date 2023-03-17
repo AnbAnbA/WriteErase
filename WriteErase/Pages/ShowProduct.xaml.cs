@@ -104,24 +104,27 @@ namespace WriteErase
         {
             try
             {
-                Button btn = (Button)sender;
-                string index = btn.Uid;
-                Product product = Base.WE.Product.FirstOrDefault(x => x.ProductArticleNumber == index);
-                List<OrderProduct> orderProducts = Base.WE.OrderProduct.Where(x => x.ProductArticleNumber == index).ToList();
-                if (orderProducts.Count == 0)
+                if(MessageBox.Show("Вы точно хотите удалить элемент?", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes) 
                 {
-                    foreach (OrderProduct orderProduct in orderProducts)
+                    Button btn = (Button)sender;
+                    string index = btn.Uid;
+                    Product product = Base.WE.Product.FirstOrDefault(x => x.ProductArticleNumber == index);
+                    List<OrderProduct> orderProducts = Base.WE.OrderProduct.Where(x => x.ProductArticleNumber == index).ToList();
+                    if (orderProducts.Count == 0)
                     {
-                        Base.WE.OrderProduct.Remove(orderProduct);
+                        foreach (OrderProduct orderProduct in orderProducts)
+                        {
+                            Base.WE.OrderProduct.Remove(orderProduct);
+                        }
+                        Base.WE.Product.Remove(product);
+                        Base.WE.SaveChanges();
+                        FrameC.frameM.Navigate(new ShowProduct(user));
                     }
-                    Base.WE.Product.Remove(product);
-                    Base.WE.SaveChanges();
+                    else
+                    {
+                        MessageBox.Show("Товар нельзя удалить так как он указан в заказе!");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Товар нельзя удалить так как он указан в заказе!");
-                }
-
             }
             catch
             {
