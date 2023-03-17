@@ -25,7 +25,15 @@ namespace WriteErase
         {
             get
             {
-                return (double)(Convert.ToDouble(ProductCost) - (Convert.ToDouble(ProductCost) * ProductDiscountAmount / 100));
+                if (ProductDiscountAmount != null)
+                {
+                    return (double)(Convert.ToDouble(ProductCost) - (Convert.ToDouble(ProductCost) * ProductDiscountAmount / 100));
+                }
+                else 
+                {
+                    return 0;
+                }
+               
             }
         }
 
@@ -33,7 +41,7 @@ namespace WriteErase
         {
             get
             {
-                if (ProductDiscountAmount != 0)
+                if (ProductDiscountAmount != null)
                 {
                     return costWithDiscount.ToString("0.00");
                 }
@@ -57,7 +65,7 @@ namespace WriteErase
         {
             get
             {
-                if (ProductDiscountAmount != 0)
+                if (ProductDiscountAmount != null)
                 {
                     return "Strikethrough";
                 }
