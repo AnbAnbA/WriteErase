@@ -10,9 +10,8 @@ namespace SF2022User_NN_Lib
     {
         public string[] AvailablePeriods(TimeSpan[] startTimes, int[] durations, TimeSpan beginWorkingTime, TimeSpan endWorkingTime, int consultationTime)
         {
-            string[] strings = new string[1];
-            strings[1] = "hello";
-            return strings;
+           string[] strings = new string[1];
+           return strings;
         }
     }
 }
