@@ -166,6 +166,10 @@ namespace WriteErase
             }
             return false;
         }
+
+        /// <summary>
+        /// метод подсчета суммы и скидки
+        /// </summary>
         private void calculateSummaAndDiscount()
         {
             summa = 0;

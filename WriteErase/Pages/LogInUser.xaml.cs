@@ -90,17 +90,18 @@ namespace WriteErase
             }
         }
 
-        public void LogInUs() //метод авторизации
-        {
-            //User user = Base.WE.User.FirstOrDefault(z => z.UserLogin == tbnumber.Text);
-            //User user1 = Base.WE.User.FirstOrDefault(z => z.UserPassword == tbpassword.Password);
 
+        /// <summary>
+        /// метод для автаризации
+        /// </summary>
+        public void LogInUs() 
+        {
             User user = Base.WE.User.FirstOrDefault(z => z.UserLogin == tbnumber.Text&& z.UserPassword == tbpassword.Password);
             if (user == null)
             {
                 if (che == 1) 
                 {
-                    MessageBox.Show("Не удалось войти! Система входа заблокирована на 10 секунд!");
+                    MessageBox.Show("Не удалось войти! Система входа заблокирована на 10 секунд!");// блокировка системы при неудачном входе
                     tbnumber.IsEnabled = false;
                     tbnumber.Text = "";
                     tbpassword.Password = "";
@@ -123,15 +124,15 @@ namespace WriteErase
                     {
                         case 2:
                             MessageBox.Show("Здравствуйте, администратор " + user.UserName);
-                            FrameC.frameM.Navigate(new ShowProduct(user));  // переход в меню администратора
+                            FrameC.frameM.Navigate(new ShowProduct(user));  // вход с ролью администратора
                             break;
                         case 3:
                             MessageBox.Show("Здравствуйте, менеджер " + user.UserName);
-                        FrameC.frameM.Navigate(new ShowProduct(user));   // переход в личный кабинет
+                        FrameC.frameM.Navigate(new ShowProduct(user));  // вход с ролью менеджера
                         break;
                         case 1:
                             MessageBox.Show("Здравствуйте, клиент " + user.UserName);
-                        FrameC.frameM.Navigate(new ShowProduct(user));   // переход в личный кабинет
+                        FrameC.frameM.Navigate(new ShowProduct(user));   // вход с ролью клиента
                         break;
                     }
             }
@@ -157,7 +158,11 @@ namespace WriteErase
             }
         }
 
-        public void capch()  //метод для вызова капчи
+
+        /// <summary>
+        /// метод вызова капчи
+        /// </summary>
+        public void capch()  
         {
             WindowCapcha windowCapcha = new WindowCapcha();
             windowCapcha.ShowDialog();
@@ -209,7 +214,7 @@ namespace WriteErase
                 }
                 else 
                 {
-                    MessageBox.Show("Не верный код! Система входа заблокирована на 10 секунд!");
+                    MessageBox.Show("Не верный код! Система входа заблокирована на 10 секунд!");// блокировка системы при неудачном входе
                     tbnumber.IsEnabled = false;
                     tbnumber.Text = "";
                     tbpassword.Password = "";

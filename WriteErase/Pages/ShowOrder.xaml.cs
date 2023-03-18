@@ -27,6 +27,11 @@ namespace WriteErase
             createFile();
         }
 
+
+        /// <summary>
+        /// второй конструктор 
+        /// </summary>
+        /// <param name="user"></param>
         public ShowOrder(User user)
         {
             InitializeComponent();
@@ -34,6 +39,11 @@ namespace WriteErase
             createFile();
         }
 
+
+
+        /// <summary>
+        /// метод для заполнения листа и выпадающих списоков
+        /// </summary>
         public void createFile() 
         {
             lvListOrders.ItemsSource = Base.WE.Order.ToList();
@@ -50,6 +60,10 @@ namespace WriteErase
             Filt();
         }
 
+
+        /// <summary>
+        /// метод фильтрации и сортировки
+        /// </summary>
         private void Filt()
         {
             List<Order> orders = Base.WE.Order.ToList();

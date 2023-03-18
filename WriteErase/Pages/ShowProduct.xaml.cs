@@ -40,6 +40,10 @@ namespace WriteErase
             creatFile();
         }
 
+
+        /// <summary>
+        /// метод для заполнения листа и выпадающих списоков
+        /// </summary>
         public void creatFile() 
         {
             lvProduct.ItemsSource = Base.WE.Product.ToList();
@@ -48,7 +52,11 @@ namespace WriteErase
             tbCountProduct.Text = "" + Base.WE.Product.ToList().Count() + " из " + Base.WE.Product.ToList().Count();
         }
 
-        public void filt() //метод фильтрации
+
+        /// <summary>
+        /// метод фильтрации и сортировки
+        /// </summary>
+        public void filt() 
         {
             List<Product> products = Base.WE.Product.ToList();
             if (tbSearch.Text.Length > 0)
