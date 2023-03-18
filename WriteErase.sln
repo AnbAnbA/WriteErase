@@ -5,6 +5,10 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WriteErase", "WriteErase\WriteErase.csproj", "{8B817078-C833-4CF4-AB39-81E0E9BF67CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SF2022User{NN}Lib", "SF2022User{NN}Lib\SF2022User{NN}Lib.csproj", "{FFEEF270-61E7-4560-9A6C-595EB89354DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{FEE852DE-5F13-400E-8536-ADAE5B8AE8D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{8B817078-C833-4CF4-AB39-81E0E9BF67CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B817078-C833-4CF4-AB39-81E0E9BF67CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B817078-C833-4CF4-AB39-81E0E9BF67CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFEEF270-61E7-4560-9A6C-595EB89354DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFEEF270-61E7-4560-9A6C-595EB89354DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFEEF270-61E7-4560-9A6C-595EB89354DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFEEF270-61E7-4560-9A6C-595EB89354DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEE852DE-5F13-400E-8536-ADAE5B8AE8D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEE852DE-5F13-400E-8536-ADAE5B8AE8D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEE852DE-5F13-400E-8536-ADAE5B8AE8D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEE852DE-5F13-400E-8536-ADAE5B8AE8D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
