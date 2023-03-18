@@ -19,7 +19,7 @@ namespace WriteErase
                 foreach (OrderProduct order in products) 
                 {
                     Product product = Base.WE.Product.FirstOrDefault(x => x.ProductArticleNumber == order.ProductArticleNumber);
-                    ordL=ordL+product.TitleProduct.Title + " Количество: " + products.Count +", ";
+                    ordL=ordL+product.TitleProduct.Title + " Количество: " + order.ProductCount +", ";
                 }
 
              

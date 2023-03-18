@@ -4,8 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WriteErase"
-      mc:Ignorable="d" 
-      d:DesignHeight="1550" d:DesignWidth="800"
+      mc:Ignorable="d"  Style="{StaticResource PageMain}"
+      d:DesignHeight="1550" d:DesignWidth="800" 
       Title="Список продуктов">
 
     <Page.Resources>
@@ -100,7 +100,7 @@
                 </ListView.ContextMenu>
             </ListView>
             <Grid Grid.Row="3">
-                <Button x:Name="btnBack" Content="Вернуться к авторизации" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Left" Click="btnBack_Click"/>
+                <Button x:Name="btnBack" Content="Вернуться к авторизации"  Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Left" Click="btnBack_Click"/>
                 <Button x:Name="btnBasket" Content="Просмотр корзины" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Center" Click="btnBasket_Click" Visibility="Collapsed"/>
                 <Button x:Name="btnOrders" Content="Оформленные заказы" Template="{StaticResource CTButonMainPage}" Style="{StaticResource ResourceKey=BtnMain}" HorizontalAlignment="Right" Click="btnOrders_Click" Visibility="Collapsed"/>
             </Grid>

@@ -13,7 +13,7 @@ namespace WriteErase
         {
             get
             {
-                if (ProductDiscountAmount > 15)
+                if (ProductDiscountAmount > 0)
                 {
                     SolidColorBrush color = (SolidColorBrush)new BrushConverter().ConvertFromString("#7fff00");
                     return color;
@@ -25,7 +25,7 @@ namespace WriteErase
         {
             get
             {
-                if (ProductDiscountAmount != null)
+                if (ProductDiscountAmount != 0)
                 {
                     return (double)(Convert.ToDouble(ProductCost) - (Convert.ToDouble(ProductCost) * ProductDiscountAmount / 100));
                 }
@@ -41,7 +41,7 @@ namespace WriteErase
         {
             get
             {
-                if (ProductDiscountAmount != null)
+                if (ProductDiscountAmount != 0)
                 {
                     return costWithDiscount.ToString("0.00");
                 }
@@ -65,7 +65,7 @@ namespace WriteErase
         {
             get
             {
-                if (ProductDiscountAmount != null)
+                if (ProductDiscountAmount != 0)
                 {
                     return "Strikethrough";
                 }

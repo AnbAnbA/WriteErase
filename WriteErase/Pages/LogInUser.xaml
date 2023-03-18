@@ -4,9 +4,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WriteErase"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"  Style="{StaticResource PageMain}"
       d:DesignHeight="350" d:DesignWidth="600" MinHeight="350" MinWidth="600"
-      Title="LogInUser">
+      Title="Авторизация">
 
     <Grid>
 
@@ -18,24 +18,21 @@
                     <TextBox Margin="15,5,0,10" x:Name="tbnumber" Width="200" IsEnabled="True" PreviewKeyDown="tbnumber_PreviewKeyDown" TextChanged="tbnumber_TextChanged"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Margin="5,0,0,0" Content="Пароль"></Label>
-                    <PasswordBox PasswordChanged="tbpassword_PasswordChanged" Margin="8,5,0,10" x:Name="tbpassword" Width="200" IsEnabled="False" PreviewKeyDown="tbpassword_PreviewKeyDown"  />
+                    <Label Margin="3,0,0,0" Content="Пароль"></Label>
+                    <PasswordBox PasswordChanged="tbpassword_PasswordChanged" Margin="6,5,0,10" x:Name="tbpassword" Width="200" IsEnabled="False" PreviewKeyDown="tbpassword_PreviewKeyDown"  />
                 </StackPanel>
-                <StackPanel Name="spcode" Orientation="Horizontal" Visibility="Collapsed">
-                    <Label Margin="5,0,0,0" Content="Код"></Label>
-                    <TextBox Margin="29,5,0,10"  x:Name="tbcode" Width="200" IsEnabled="False" TextChanged="tbcode_TextChanged" PreviewKeyDown="tbcode_PreviewKeyDown"  ></TextBox>
+                <StackPanel Name="spcode" Orientation="Horizontal" >
+                    <Label Margin="6,0,0,0" Content="Код"></Label>
+                    <TextBox Margin="33,5,0,10"  x:Name="tbcode" Width="200" IsEnabled="False" TextChanged="tbcode_TextChanged" PreviewKeyDown="tbcode_PreviewKeyDown"  ></TextBox>
 
-                    <!--<Button Margin="5,0,0,6"  x:Name="btrefresh" Width="23" Height="23" IsEnabled="False">
-                        <Image  Width="20" Height="20" Source="/Resources/На авторизацию_Обновление кода.jpg"  ></Image>
-                    </Button>-->
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,40,0,0">
-                <Button  x:Name="btcancel" Click="btcancel_Click" Margin="75,0,0,0" Width="75" Height="20" Content="Отмена" IsEnabled="True" Style="{StaticResource ResourceKey=BtnMain}" Cursor="Hand"></Button>
-                <Button x:Name="btlogin" Click="btlogin_Click"  Margin="30,0,0,0" Width="75" Height="20" Content="Вход" IsEnabled="False" Style="{StaticResource ResourceKey=BtnMain}"></Button>
+                <Button  x:Name="btcancel" Click="btcancel_Click" Margin="75,0,0,0" Width="75" Height="25" Content="Отмена" IsEnabled="True" Style="{StaticResource ResourceKey=BtnMain}" Cursor="Hand"></Button>
+                <Button x:Name="btlogin" Click="btlogin_Click"  Margin="30,0,0,0" Width="75" Height="25" Content="Вход" IsEnabled="False" Style="{StaticResource ResourceKey=BtnMain}"></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,50,0,0">
-                <Button  x:Name="btguest" Click="btguest_Click" Margin="110,0,0,0" Width="105" Height="20" Content="Войти как гость" IsEnabled="True" Style="{StaticResource ResourceKey=BtnMain}" Cursor="Hand"></Button>
+                <Button  x:Name="btguest" Click="btguest_Click" Margin="101,0,0,0" Width="127" Height="25" Content="Войти как гость" IsEnabled="True" Style="{StaticResource ResourceKey=BtnMain}" Cursor="Hand"></Button>
             </StackPanel>
         </StackPanel>
     </Grid>
